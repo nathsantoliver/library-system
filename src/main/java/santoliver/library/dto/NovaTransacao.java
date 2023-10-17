@@ -1,10 +1,13 @@
 package santoliver.library.dto;
 
+import santoliver.library.model.Fatura;
+
 public class NovaTransacao {
 
 	private Integer estudanteId;
 	private Integer livroId;
 	private Boolean estaPendente;
+	private Fatura fatura;
 	
 	public Integer getEstudanteId() {
 		return estudanteId;
@@ -23,6 +26,12 @@ public class NovaTransacao {
 	}
 	public void setEstaPendente(Boolean estaPendente) {
 		this.estaPendente = estaPendente;
+	}
+	public Fatura getFatura() {
+		return fatura;
+	}
+	public void setFatura(Fatura fatura) {
+		this.fatura = fatura;
 	}
 	
 }

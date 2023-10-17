@@ -59,8 +59,4 @@ public class Livro {
 		this.status = status;
 	}
 	
-	// METODOS
-	// TODO: Método de mostrar as informações do livro - livroDetalhes()
-	// TODO: Método de atualizar status do livro - atualizarStatus()
-	
 }

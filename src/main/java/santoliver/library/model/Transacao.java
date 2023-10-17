@@ -77,10 +77,4 @@ public class Transacao {
 		this.fatura = fatura;
 	}
 	
-	// METODOS
-	// TODO: método de criar transação - criarTransacao()
-	// TODO: método de deletar transação - deletarTransacao()
-	// TODO: método de buscar transação - buscarTransacao()
-	// TODO: método de gerar fatura - gerarFatura(Fatura fatura)
-
 }

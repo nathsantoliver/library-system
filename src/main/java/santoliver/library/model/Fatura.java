@@ -24,7 +24,4 @@ public class Fatura {
 		this.valor = valor;
 	}
 
-	// METODOS
-	// TODO: método de calcular valor do emprestimo - valorConta()
-	// TODO: método atualizar valor da conta - atualizarValorConta()
 }

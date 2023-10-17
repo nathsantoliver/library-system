@@ -15,8 +15,6 @@ public interface TransacaoService {
 	
 	void novaTransacao(NovaTransacao novaTransacao);
 	
-	void atualizarTransacao(Integer transacaoId, Transacao transacao);
-	
 	void deletarTransacao(Integer transacaoId);
 	
 }

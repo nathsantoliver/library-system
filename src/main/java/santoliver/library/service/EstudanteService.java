@@ -1,5 +1,6 @@
 package santoliver.library.service;
 
+import santoliver.library.dto.NovoEstudante;
 import santoliver.library.model.Estudante;
 
 public interface EstudanteService {
@@ -8,7 +9,7 @@ public interface EstudanteService {
 	
 	Estudante buscarEstudantePorId(Integer id);
 	
-	void inserirEstudante(Estudante estudante);
+	void inserirEstudante(NovoEstudante novoEstudante);
 	
 	void atualizarEstudante(Integer id, Estudante estudante);
 	

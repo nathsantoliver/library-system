@@ -1,6 +1,7 @@
 package santoliver.library.service.impl;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import santoliver.library.dto.NovaTransacao;
 import santoliver.library.model.Estudante;
+import santoliver.library.model.Fatura;
 import santoliver.library.model.Livro;
 import santoliver.library.model.Transacao;
 import santoliver.library.repository.TransacaoRepository;
@@ -62,6 +64,7 @@ public class TransacaoServiceImpl implements TransacaoService {
 
 	@Override
 	public void novaTransacao(NovaTransacao novaTransacao) {
+		
 		Transacao transacao = new Transacao();
 		
 		transacao.setEstudanteId(novaTransacao.getEstudanteId());
@@ -69,20 +72,22 @@ public class TransacaoServiceImpl implements TransacaoService {
 		transacao.setDataEmprestimo(LocalDate.now());
 		transacao.setDataDevolucao(LocalDate.now().plusDays(7));
 		transacao.setEstaPendente(novaTransacao.getEstaPendente());
-		transacao.setFatura(novaTransacao.getFatura());
 		
-		transacaoRepository.save(transacao);
-	}
-
-	@Override
-	public void atualizarTransacao(Integer transacaoId, Transacao transacao) {
-		for(Transacao t : buscarTodasTransacoes()) {
-			if(t.getTransacaoId() == transacao.getTransacaoId()) {
-				t.setFatura(transacao.getFatura());;
-				break;
-			}
+		Fatura fatura = new Fatura();
+		fatura.setValor(0.0);
+		fatura.setCodFatura(new Date().getTime());
+		
+		if(transacao.getDataDevolucao().compareTo(LocalDate.now()) > 0) {
+			do {
+				int i = 1;
+				Double valor = i * 7.59;
+				fatura.setValor(valor);
+				i++;
+			} while(transacao.getEstaPendente() == true);
 		}
 		
+		transacao.setFatura(fatura);
+		transacaoRepository.save(transacao);
 	}
 
 	@Override
