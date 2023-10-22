@@ -31,16 +31,7 @@ public class LivroController {
 	public ResponseEntity<Livro> buscarLivroPorId(@PathVariable Integer id) {
 		return ResponseEntity.ok(livroService.buscarLivroPorId(id));
 	}
-	
-	@GetMapping("/{titulo}")
-	public ResponseEntity<Livro> buscarLivroPorTitulo(@PathVariable String titulo) {
-		return ResponseEntity.ok(livroService.buscarLivroPorTitulo(titulo));
-	}
 
-	@GetMapping("/{autor}")
-	public ResponseEntity<Iterable<Livro>> buscarLivroPorAutor(@PathVariable String autor) {
-		return ResponseEntity.ok(livroService.buscarLivroPorAutor(autor));
-	}
 	
 	@PostMapping
 	public ResponseEntity<NovoLivro> inserirLivro(@RequestBody NovoLivro novoLivro) {
@@ -48,13 +39,13 @@ public class LivroController {
 		return ResponseEntity.ok(novoLivro);
 	}
 	
-	@PutMapping
-	public ResponseEntity<Livro> atualizarStatusLivro(@PathVariable Integer id, @RequestBody Livro livro) {
-		livroService.atualizarStatusLivro(id, livro);
+	@PutMapping("/{id}")
+	public ResponseEntity<Livro> atualizarLivro(@PathVariable Integer id, @RequestBody Livro livro) {
+		livroService.atualizarLivro(id, livro);
 		return ResponseEntity.ok(livro);
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deletarLivro(@PathVariable Integer id) {
 		livroService.deletarLivro(id);
 		return ResponseEntity.ok().build();

@@ -3,9 +3,9 @@ package santoliver.library.repository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import santoliver.library.model.Transacao;
+import santoliver.library.model.Emprestimo;
 
 @Repository
-public interface TransacaoRepository extends CrudRepository<Transacao, Integer> {
+public interface EmprestimoRepository extends CrudRepository<Emprestimo, Integer> {
 
 }

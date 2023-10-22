@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import santoliver.library.dto.NovoEstudante;
 import santoliver.library.model.Estudante;
 import santoliver.library.service.EstudanteService;
 
@@ -33,18 +32,18 @@ public class EstudanteController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<NovoEstudante> inserirEstudante(@RequestBody NovoEstudante novoEstudante) {
-		estudanteService.inserirEstudante(novoEstudante);
-		return ResponseEntity.ok(novoEstudante);
+	public ResponseEntity<Estudante> inserirEstudante(@RequestBody Estudante estudante) {
+		estudanteService.inserirEstudante(estudante);
+		return ResponseEntity.ok(estudante);
 	}
 	
-	@PutMapping
+	@PutMapping("/{id}")
 	public ResponseEntity<Estudante> atualizarEstudante(@PathVariable Integer id, @RequestBody Estudante estudante) {
 		estudanteService.atualizarEstudante(id, estudante);
 		return ResponseEntity.ok(estudante);
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deletarEstudante(@PathVariable Integer id) {
 		estudanteService.deletarEstudante(id);
 		return ResponseEntity.ok().build();

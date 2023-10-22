@@ -11,7 +11,7 @@ import jakarta.persistence.Id;
 public class Livro {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String titulo;
 	private String autor;

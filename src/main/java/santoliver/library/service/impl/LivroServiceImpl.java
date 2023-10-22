@@ -1,7 +1,5 @@
 package santoliver.library.service.impl;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,30 +27,30 @@ public class LivroServiceImpl implements LivroService {
 		return livro.get();
 	}
 	
-	@Override
-	public Livro buscarLivroPorTitulo(String titulo) {
-		Livro livroPorTitulo = null;
-		
-		for(Livro l : buscarTodosLivros()) {
-			if(l.getTitulo().equalsIgnoreCase(titulo)) {
-				livroPorTitulo = l;
-				break;
-			}
-		}
-		
-		return livroPorTitulo;
-	}
+//	@Override
+//	public Livro buscarLivroPorTitulo(String titulo) {
+//		Livro livroPorTitulo = null;
+//		
+//		for(Livro l : buscarTodosLivros()) {
+//			if(l.getTitulo().equalsIgnoreCase(titulo)) {
+//				livroPorTitulo = l;
+//				break;
+//			}
+//		}
+//		
+//		return livroPorTitulo;
+//	}
 
-	@Override
-	public List<Livro> buscarLivroPorAutor(String autor) {
-		List<Livro> livrosPorAutor = new ArrayList<>();
-		for(Livro l : buscarTodosLivros()) {
-			if(l.getAutor().equalsIgnoreCase(autor)) {
-				livrosPorAutor.add(l);
-			}
-		}
-		return livrosPorAutor;
-	}
+//	@Override
+//	public List<Livro> buscarLivroPorAutor(String autor) {
+//		List<Livro> livrosPorAutor = new ArrayList<>();
+//		for(Livro l : buscarTodosLivros()) {
+//			if(l.getAutor().equalsIgnoreCase(autor)) {
+//				livrosPorAutor.add(l);
+//			}
+//		}
+//		return livrosPorAutor;
+//	}
 
 	@Override
 	public void inserirLivro(NovoLivro novoLivro) {
@@ -67,10 +65,15 @@ public class LivroServiceImpl implements LivroService {
 	}
 
 	@Override
-	public void atualizarStatusLivro(Integer id, Livro livro) {
+	public void atualizarLivro(Integer id, Livro livro) {
 		for(Livro l : buscarTodosLivros()) {
 			if(l.getId() == livro.getId()) {
+				l.setTitulo(livro.getTitulo());
+				l.setAutor(livro.getAutor());
+				l.setEdicao(livro.getEdicao());
 				l.setStatus(livro.getStatus());
+				
+				livroRepository.save(l);
 				break;
 			}
 		}

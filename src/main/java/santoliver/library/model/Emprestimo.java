@@ -9,25 +9,26 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Transacao {
+public class Emprestimo {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer transacaoId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer emprestimoId;
 	private Integer estudanteId;
 	private Integer livroId;
 	private LocalDate dataEmprestimo;
+	private LocalDate devolucaoPrevista;
 	private LocalDate dataDevolucao;
 	private Boolean estaPendente;
 	@Embedded
 	private Fatura fatura;
 	
-	public Integer getTransacaoId() {
-		return transacaoId;
+	public Integer getEmprestimoId() {
+		return emprestimoId;
 	}
 	
-	public void setTransacaoId(Integer transacaoId) {
-		this.transacaoId = transacaoId;
+	public void setEmprestimoId(Integer emprestimoId) {
+		this.emprestimoId = emprestimoId;
 	}
 	public Integer getEstudanteId() {
 		return estudanteId;
@@ -51,6 +52,14 @@ public class Transacao {
 	
 	public void setDataEmprestimo(LocalDate dataEmprestimo) {
 		this.dataEmprestimo = dataEmprestimo;
+	}
+
+	public LocalDate getDevolucaoPrevista() {
+		return devolucaoPrevista;
+	}
+
+	public void setDevolucaoPrevista(LocalDate devolucaoPrevista) {
+		this.devolucaoPrevista = devolucaoPrevista;
 	}
 	
 	public LocalDate getDataDevolucao() {

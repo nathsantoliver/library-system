@@ -10,7 +10,7 @@ import jakarta.persistence.ManyToOne;
 public class Estudante {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String nome;
 	private String telefone;
@@ -48,10 +48,5 @@ public class Estudante {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
-	
-	// METODOS
-	// TODO: método de adicionar pendencia - adicionarPendencia()
-	// TODO: método de remover pendencia - removerPendencia()
-	// TODO: método de pagamento da conta - pagamentoFatura() 
 
 }
